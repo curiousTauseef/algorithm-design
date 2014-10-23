@@ -27,8 +27,3 @@ def merge_and_count_split(left, right):
       merged.append(right[0])
       right = right[1:]
   return (merged, count)
-
-
-a = [1,2,3,4,5,7,6,9,8,10]
-count=sort_and_count(a, len(a))
-print (count)
