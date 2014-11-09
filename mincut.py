@@ -1,15 +1,17 @@
 import random
 import copy
+import itertools
 
 def subroutine(graph):
     while (len(graph) > 2):
-        node1 = random.choice(list(graph))
-        node2 = random.choice(graph[node1])
-        graph[node1] = [x for x in graph[node1] + graph[node2] if x not in (node1, node2)]
-        del graph[node2]
+        id1 = random.choice(list(graph.keys()))
+        id2 = random.choice(graph[id1])
+        contracted = graph[id1] + graph[id2]
+        del graph[id2]
+        graph[id1] = [x for x in contracted if x not in (id1, id2)]
         for node in graph:
-            graph[node] = [x if x != node2 else node1 for x in graph[node]]
-        values = list(graph.values)
+            graph[node] = [id1 if x == id2 else x for x in graph[node]]
+        values = list(graph.values())
     return len(values[0])
 
 def readgraph(file):
