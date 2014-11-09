@@ -1,6 +1,6 @@
 import random
 
-def quick_sort(a):
+def quicksort(a):
     if len(a) <= 1:
         return a
     else:
@@ -8,7 +8,7 @@ def quick_sort(a):
         a.remove(pivot)
         left = [i for i in a if i < pivot]
         right = [i for i in a if i >= pivot]
-        return (quick_sort(left) + [pivot] + quick_sort(right))
+        return (quicksort(left) + [pivot] + quicksort(right))
 
 def choose_pivot(a):
     return random.choice(a)

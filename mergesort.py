@@ -1,11 +1,11 @@
-def merge_sort (a):
+def mergesort(a):
   if len(a) <= 1:
     return a
   else:
     mid = len(a) // 2
-    return merge (merge_sort(a[:mid]), merge_sort(a[mid:]))
+    return merge(mergesort(a[:mid]), mergesort(a[mid:]))
 
-def merge (left, right):
+def merge(left, right):
   merged = []
   while left and right:
     if left[0] < right[0]:
