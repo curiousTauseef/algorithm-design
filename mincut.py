@@ -9,7 +9,8 @@ def subroutine(graph):
         del graph[node2]
         for node in graph:
             graph[node] = [x if x != node2 else node1 for x in graph[node]]
-    return len(graph[list(graph.keys())[0]])
+        values = list(graph.values)
+    return len(values[0])
 
 def readgraph(file):
     graph = {}
