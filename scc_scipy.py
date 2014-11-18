@@ -1,10 +1,10 @@
-# from scipy.sparse import coo_matrix as matrix
-# from scipy.sparse.csgraph import connected_components
+from scipy.sparse import coo_matrix, csgraph
 import numpy as np
 
 def compute_scc(file, number_of_nodes):
-    x, y = np.loadtxt(file, 'int', unpack = True)
-    # adj_matrix = sparse.coo_matrix((np.ones(len(i_indices)), (i_indices, j_indices)), shape = (875715, 875715))
-    # return connected_components(adj_matrix, connection = 'strong')
+    with open(file) as f:
+        data = np.array([list(map(int, line.split())) for line in f])
+        adj_matrix = coo_matrix((np.ones(len(data)), (data[:, 0], data[:, 1])), shape = (number_of_nodes, number_of_nodes))
+        return csgraph.connected_components(adj_matrix, connection = 'strong')
 
-compute_scc('graf', 2)
+compute_scc('graf', 875715)
